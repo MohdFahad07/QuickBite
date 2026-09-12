@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Track and review your QuickBite food orders."/>
+  <meta name="theme-color" content="#ff6b35"/>
+  <title>My Orders - QuickBite</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/orders.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <noscript>
+    <div style="background:#ff6b35;color:white;text-align:center;padding:12px;font-family:sans-serif;font-size:14px;">
+      ⚠️ JavaScript is required for QuickBite. Please enable it in your browser.
+    </div>
+  </noscript>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><i class="fas fa-bolt"></i> Quick<span>Bite</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart <span class="cart-badge" id="cartBadge">0</span></a></li>
+        <li><a href="orders.html" class="active">My Orders</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div id="navUserSlot"></div>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header menu-page-header">
+    <div class="container">
+      <div class="header-badge"><i class="fas fa-clock-rotate-left"></i> Live Tracking &amp; History</div>
+      <h1>My <span class="highlight">Orders</span></h1>
+      <p>Track your real-time delivery status and review your order history.</p>
+    </div>
+  </section>
+
+  <section class="orders-section">
+    <div class="container">
+      <div id="ordersContainer"></div>
+    </div>
+  </section>
+
+  <!-- Receipt / Invoice Modal -->
+  <div class="modal-overlay" id="invoiceModal">
+    <div class="modal invoice-modal-card">
+      <div class="modal-header">
+        <h2>
+          <span class="modal-header-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+          Order Receipt
+        </h2>
+        <button class="modal-close" onclick="closeInvoiceModal()" title="Close"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div id="invoiceModalBody">
+        <!-- Rendered dynamically by JS -->
+      </div>
+      <div class="invoice-modal-footer">
+        <button class="btn-secondary" onclick="printInvoice()"><i class="fas fa-print"></i> Print Receipt</button>
+        <button class="btn-primary" onclick="closeInvoiceModal()"><i class="fas fa-check"></i> Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span class="footer-year">2024</span> QuickBite. Developed by <strong>Mohd Fahad</strong> | Full Stack Web Development Project</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>

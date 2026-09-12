@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="QuickBite - Order delicious food online. Fast delivery, fresh food, best prices."/>
+  <meta name="theme-color" content="#ff6b35"/>
+  <title>QuickBite - Online Food Ordering System</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/home.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <noscript>
+    <div style="background:#ff6b35;color:white;text-align:center;padding:12px;font-family:sans-serif;font-size:14px;">
+      JavaScript is required for QuickBite. Please enable it in your browser.
+    </div>
+  </noscript>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-bolt"></i> Quick<span>Bite</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart <span class="cart-badge" id="cartBadge">0</span></a></li>
+        <li><a href="orders.html">My Orders</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div id="navUserSlot"></div>
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-tag"><i class="fas fa-fire"></i> Fast &amp; Fresh Delivery</div>
+      <h1 class="hero-title" id="heroTitle">Craving Something <span class="highlight" id="typedHeroText"></span><span class="typing-cursor">|</span></h1>
+      <p class="hero-subtitle">Order your favourite meals from top restaurants near you. Hot, fresh and delivered right to your door in 30 minutes!</p>
+      <div class="hero-search">
+        <div class="search-box">
+          <i class="fas fa-map-marker-alt"></i>
+          <input type="text" id="locationInput" placeholder="Enter your delivery address..." />
+        </div>
+        <a href="menu.html" class="btn-primary">
+          <i class="fas fa-utensils"></i> Order Now
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Restaurants</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">10K+</span><span class="stat-label">Happy Customers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">30 min</span><span class="stat-label">Avg. Delivery</span></div>
+      </div>
+    </div>
+
+    <!-- STICKY BURGER HERO VISUAL -->
+    <div class="hero-image" id="heroImage">
+      <div class="burger-sticky-wrap">
+        <div class="burger-assembly" id="burgerAssembly" aria-label="Interactive scroll-assembling hamburger">
+          <div class="burger-stack" id="burgerStack">
+            <!-- TOP BUN -->
+            <div class="burger-layer bun-top" data-layer="Top Bun">
+              <div class="bun-shine"></div>
+              <div class="sesame-seeds">
+                <span class="seed s1"></span>
+                <span class="seed s2"></span>
+                <span class="seed s3"></span>
+                <span class="seed s4"></span>
+                <span class="seed s5"></span>
+                <span class="seed s6"></span>
+                <span class="seed s7"></span>
+              </div>
+              <span class="layer-tag">Top Bun</span>
+            </div>
+
+            <!-- LETTUCE -->
+            <div class="burger-layer lettuce" data-layer="Crisp Lettuce">
+              <div class="lettuce-leaf l1"></div>
+              <div class="lettuce-leaf l2"></div>
+              <div class="lettuce-leaf l3"></div>
+              <span class="layer-tag">Crisp Lettuce</span>
+            </div>
+
+            <!-- CHEESE -->
+            <div class="burger-layer cheese" data-layer="Melted Cheese">
+              <div class="cheese-drip d1"></div>
+              <div class="cheese-drip d2"></div>
+              <div class="cheese-drip d3"></div>
+              <span class="layer-tag">Melted Cheese</span>
+            </div>
+
+            <!-- PATTY -->
+            <div class="burger-layer patty" data-layer="Juicy Patty">
+              <div class="sear-marks">
+                <span class="sear s1"></span>
+                <span class="sear s2"></span>
+                <span class="sear s3"></span>
+              </div>
+              <span class="layer-tag">Beef Patty</span>
+            </div>
+
+            <!-- BOTTOM BUN -->
+            <div class="burger-layer bun-bottom" data-layer="Bottom Bun">
+              <span class="layer-tag">Bottom Bun</span>
+            </div>
+          </div>
+
+          <!-- BURGER PLATE / GLOW SHADOW -->
+          <div class="burger-plate-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES SECTION -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Browse <span class="highlight">Categories</span></h2>
+        <p>Explore our wide variety of cuisines and food options</p>
+      </div>
+      <div class="categories-grid" id="categoriesGrid">
+        <!-- Dynamically filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED ITEMS -->
+  <section class="featured" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Curated daily</p>
+        <h2>Today's <span class="highlight">Top Picks</span></h2>
+        <p>Most loved dishes by our customers</p>
+        <a href="menu.html" class="view-all-btn">View All <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="food-grid" id="featuredGrid">
+        <!-- Dynamically filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It <span class="highlight">Works</span></h2>
+        <p>Order your food in just 3 simple steps</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon"><i class="fas fa-search"></i></div>
+          <h3>Browse Menu</h3>
+          <p>Explore hundreds of dishes from our wide menu collection</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon"><i class="fas fa-shopping-cart"></i></div>
+          <h3>Add to Cart</h3>
+          <p>Select your favourite items and add them to your cart</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon"><i class="fas fa-truck"></i></div>
+          <h3>Fast Delivery</h3>
+          <p>Sit back and relax — your food arrives in 30 minutes!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER BANNER -->
+  <section class="offer-banner">
+    <div class="container">
+      <div class="offer-content">
+        <div class="offer-text">
+          <div class="offer-badges-group">
+            <span class="offer-badge"><i class="fas fa-fire"></i> Limited Offer</span>
+            <span class="offer-badge timer-badge"><i class="fas fa-clock"></i> Ends In: <strong id="offerTimer">05h 42m 18s</strong></span>
+          </div>
+          <h2 id="offerTitle">Get <span class="highlight-orange" id="offerDiscountText">50% OFF</span> on Your First Order!</h2>
+          <p id="offerSubtext">Use code <strong id="offerCodeTag" class="code-highlight">QUICKBITE50</strong> at checkout. Tap any code below to copy & apply!</p>
+          <div class="offer-codes" id="offerCodesGroup">
+            <button type="button" class="offer-code-btn active" onclick="selectPromoOffer('QUICKBITE50', '50% OFF', 'Get 50% OFF on Your First Order!', this)">
+              <i class="fas fa-tag"></i> <span class="code-val">QUICKBITE50</span> — <strong>50% OFF</strong>
+            </button>
+            <button type="button" class="offer-code-btn" onclick="selectPromoOffer('FAHAD20', '20% OFF', 'Get 20% Flat Discount on All Shakes!', this)">
+              <i class="fas fa-percent"></i> <span class="code-val">FAHAD20</span> — <strong>20% OFF</strong>
+            </button>
+            <button type="button" class="offer-code-btn" onclick="selectPromoOffer('MANGO15', '15% OFF', 'Instant 15% OFF on Mango Shake Specials!', this)">
+              <i class="fas fa-bolt"></i> <span class="code-val">MANGO15</span> — <strong>15% OFF</strong>
+            </button>
+          </div>
+          <a href="menu.html" class="btn-primary">Grab the Offer <i class="fas fa-tag"></i></a>
+        </div>
+        <div class="offer-illustration mango-shake-showcase" id="mangoShowcaseCard" aria-label="Fresh Mango Shake Special Offer">
+          <div class="mango-ambient-light"></div>
+          <div class="shake-glass-wrap" id="shakeGlassWrap">
+            
+            <div class="shake-assembly" id="shakeAssembly">
+              <div class="shake-stack" id="shakeStack">
+                
+                <!-- Cherry Top -->
+                <div class="shake-layer cherry-top" data-layer="Fresh Cherry">
+                  <div class="cherry-stem"></div>
+                  <span class="layer-tag">Fresh Cherry</span>
+                </div>
+                
+                <!-- Whipped Cream -->
+                <div class="shake-layer whipped-cream" data-layer="Whipped Cream">
+                  <div class="cream-fluff c1"></div>
+                  <div class="cream-fluff c2"></div>
+                  <div class="cream-fluff c3"></div>
+                  <span class="layer-tag">Whipped Cream</span>
+                </div>
+                
+                <!-- Mango Chunks -->
+                <div class="shake-layer mango-chunks" data-layer="Mango Chunks">
+                  <div class="chunk ch1"></div>
+                  <div class="chunk ch2"></div>
+                  <div class="chunk ch3"></div>
+                  <span class="layer-tag">Mango Chunks</span>
+                </div>
+                
+                <!-- Thick Shake (Liquid) -->
+                <div class="shake-layer shake-liquid" data-layer="Thick Mango Shake">
+                  <!-- Tapakta Hua Animation -->
+                  <div class="shake-drip tapakta-drip td1"></div>
+                  <div class="shake-drip tapakta-drip td2"></div>
+                  <div class="shake-drip tapakta-drip td3"></div>
+                  <span class="layer-tag">Thick Mango Shake</span>
+                </div>
+
+                <!-- Glass Base -->
+                <div class="shake-layer shake-glass-base" data-layer="Glass Cup">
+                  <div class="glass-highlight"></div>
+                  <span class="layer-tag">Glass Cup</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Drip Splash Ripple Ring -->
+            <div class="drip-splash-ring"></div>
+            
+            <!-- Floating Sparkles & Mango Slice Particles -->
+            <span class="mango-sparkle s1">✨</span>
+            <span class="mango-sparkle s2">🥭</span>
+            <span class="mango-sparkle s3">✨</span>
+            <span class="mango-sparkle s4">🥭</span>
+            
+            <div class="mango-glass-glow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><i class="fas fa-bolt"></i> Quick<span>Bite</span></a>
+          <p>Your favourite food, delivered fast. QuickBite connects you with the best restaurants in your city.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">My Orders</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="menu.html?cat=pizza">Pizza</a></li>
+            <li><a href="menu.html?cat=burger">Burgers</a></li>
+            <li><a href="menu.html?cat=biryani">Biryani</a></li>
+            <li><a href="menu.html?cat=desserts">Desserts</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> support@quickbite.in</p>
+          <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span class="footer-year">2024</span> QuickBite. Developed by <strong>Mohd Fahad</strong> | Full Stack Web Development Project</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

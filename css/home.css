@@ -1,0 +1,847 @@
+/* ==========================================
+   QuickBite - Home Page Styles
+   ========================================== */
+
+/* ---- Hero ---- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 24px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 48px;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 580px;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 107, 53, 0.12);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  color: var(--primary);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.hero-title {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.typing-cursor {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blinkCursor 0.7s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.9s ease forwards;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50px;
+  padding: 14px 20px;
+  transition: var(--transition);
+}
+
+.search-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
+}
+
+.search-box i { color: var(--primary); font-size: 16px; }
+
+.search-box input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: var(--font);
+  font-size: 15px;
+  width: 100%;
+}
+
+.search-box input::placeholder { color: var(--text-muted); }
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* ---- Hero Image & Scroll-Assembling Burger ---- */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 500px;
+  width: 100%;
+}
+
+.burger-sticky-wrap {
+  position: sticky;
+  top: 90px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.burger-assembly {
+  position: relative;
+  width: 320px;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Burger Stack & Slices */
+.burger-stack {
+  position: relative;
+  width: 280px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.burger-layer {
+  position: relative;
+  cursor: pointer;
+  will-change: transform, opacity;
+  user-select: none;
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.layer-tag {
+  position: absolute;
+  right: -135px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(20, 20, 35, 0.9);
+  border: 1px solid rgba(255, 107, 53, 0.4);
+  color: #fff;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 30;
+}
+
+.layer-tag::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 4px 6px 4px 0;
+  border-style: solid;
+  border-color: transparent rgba(255, 107, 53, 0.4) transparent transparent;
+}
+
+.burger-layer:hover .layer-tag {
+  opacity: 1;
+  transform: translateY(-50%) translateX(6px);
+}
+
+.burger-layer:hover {
+  filter: brightness(1.1);
+}
+
+/* 1. TOP BUN */
+.bun-top {
+  width: 260px;
+  height: 75px;
+  background: linear-gradient(180deg, #f39c12 0%, #d35400 65%, #a04000 100%);
+  border-radius: 130px 130px 22px 22px;
+  box-shadow: inset 0 8px 16px rgba(255, 255, 255, 0.35),
+              inset 0 -4px 8px rgba(0, 0, 0, 0.25),
+              0 12px 30px rgba(211, 84, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 5;
+  margin-bottom: -10px;
+}
+
+.bun-shine {
+  position: absolute;
+  top: 10px;
+  left: 35px;
+  width: 140px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  transform: rotate(-10deg);
+  filter: blur(2px);
+}
+
+.sesame-seeds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.seed {
+  position: absolute;
+  width: 7px;
+  height: 4px;
+  background: #fff8e7;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.seed.s1 { top: 18px; left: 60px; transform: rotate(-25deg); }
+.seed.s2 { top: 12px; left: 110px; transform: rotate(10deg); }
+.seed.s3 { top: 22px; left: 160px; transform: rotate(-15deg); }
+.seed.s4 { top: 16px; left: 200px; transform: rotate(20deg); }
+.seed.s5 { top: 34px; left: 80px; transform: rotate(15deg); }
+.seed.s6 { top: 38px; left: 130px; transform: rotate(-30deg); }
+.seed.s7 { top: 32px; left: 180px; transform: rotate(5deg); }
+
+/* 2. LETTUCE */
+.lettuce {
+  width: 275px;
+  height: 24px;
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 70%, #1e8449 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(46, 204, 113, 0.5);
+  z-index: 4;
+  margin-bottom: -6px;
+}
+
+.lettuce-leaf {
+  position: absolute;
+  background: #27ae60;
+  border-radius: 50%;
+}
+
+.lettuce-leaf.l1 {
+  left: -8px; top: 2px; width: 32px; height: 20px;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2);
+  transform: rotate(-15deg);
+}
+.lettuce-leaf.l2 {
+  right: -6px; top: 4px; width: 34px; height: 18px;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2);
+  transform: rotate(12deg);
+}
+.lettuce-leaf.l3 {
+  left: 45%; bottom: -6px; width: 40px; height: 16px;
+  transform: translateX(-50%);
+}
+
+/* 3. CHEESE */
+.cheese {
+  width: 265px;
+  height: 16px;
+  background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(241, 196, 15, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 235, 59, 0.6);
+  z-index: 3;
+  margin-bottom: -4px;
+}
+
+.cheese-drip {
+  position: absolute;
+  background: #f39c12;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.cheese-drip.d1 { left: 30px; bottom: -12px; width: 18px; height: 14px; transform: rotate(-5deg); }
+.cheese-drip.d2 { right: 45px; bottom: -16px; width: 22px; height: 18px; transform: rotate(8deg); }
+.cheese-drip.d3 { left: 130px; bottom: -10px; width: 16px; height: 12px; }
+
+/* 4. PATTY */
+.patty {
+  width: 260px;
+  height: 48px;
+  background: linear-gradient(180deg, #5c3a21 0%, #3d2310 60%, #21130d 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 2px 5px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(120, 53, 15, 0.4);
+  z-index: 2;
+  margin-bottom: -4px;
+}
+
+.sear-marks {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 40px;
+  pointer-events: none;
+}
+
+.sear {
+  width: 3px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.45);
+  transform: rotate(25deg);
+  border-radius: 2px;
+}
+
+/* 5. BOTTOM BUN */
+.bun-bottom {
+  width: 250px;
+  height: 42px;
+  background: linear-gradient(180deg, #d35400 0%, #b04100 80%, #7e2e00 100%);
+  border-radius: 10px 10px 36px 36px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 1;
+}
+
+/* BURGER PLATE / SHADOW GLOW */
+.burger-plate-glow {
+  position: absolute;
+  bottom: 25px;
+  width: 280px;
+  height: 26px;
+  background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.5) 0%, rgba(255, 107, 53, 0) 75%);
+  border-radius: 50%;
+  filter: blur(5px);
+  z-index: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ==========================================
+   MANGO SHAKE ASSEMBLY (Tজেলা realistic Tapakta Hua Animation)
+   ========================================== */
+.mango-shake-section {
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.mango-shake-showcase {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mango-ambient-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,165,0,0.4) 0%, rgba(255,165,0,0) 70%);
+  filter: blur(20px);
+  z-index: 0;
+}
+
+.shake-glass-wrap {
+  position: relative;
+  width: 280px;
+  height: 400px;
+  z-index: 1;
+  transition: transform 0.2s ease-out;
+}
+
+.shake-assembly {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.shake-stack {
+  position: relative;
+  width: 160px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.shake-layer {
+  position: absolute;
+  width: 100%;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+
+.shake-layer .layer-tag {
+  left: 105%; /* Position tag on the right side but closer */
+  right: auto;
+  white-space: nowrap;
+}
+.shake-layer .layer-tag::before {
+  left: -6px;
+  right: auto;
+  border-width: 4px 6px 4px 0;
+  border-color: transparent rgba(255, 107, 53, 0.4) transparent transparent;
+}
+
+.shake-layer:hover .layer-tag {
+  opacity: 1;
+  transform: translateY(-50%) translateX(5px);
+}
+
+.shake-layer:hover {
+  filter: brightness(1.15);
+}
+
+/* 1. Cherry Top */
+.cherry-top {
+  bottom: 252px;
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle at 30% 30%, #ff4d4d, #cc0000);
+  border-radius: 50%;
+  z-index: 5;
+  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.5), 0 5px 10px rgba(0,0,0,0.3);
+  animation: floatCard 3s ease-in-out infinite alternate;
+  left: 50%;
+  margin-left: -16px;
+}
+
+.cherry-stem {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  width: 12px;
+  height: 20px;
+  border-left: 2px solid #2ecc71;
+  border-top-left-radius: 10px;
+  transform: rotate(15deg);
+}
+
+/* 2. Whipped Cream */
+.whipped-cream {
+  bottom: 215px;
+  width: 140px;
+  height: 45px;
+  background: #fff;
+  border-radius: 50px 50px 10px 10px;
+  z-index: 4;
+  box-shadow: inset 0 -10px 20px rgba(200,200,200,0.5), 0 5px 15px rgba(0,0,0,0.2);
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+  left: 50%;
+  margin-left: -70px;
+}
+
+.cream-fluff {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: inset 0 -5px 10px rgba(200,200,200,0.4);
+}
+.cream-fluff.c1 { width: 60px; height: 60px; top: -25px; left: 0px; }
+.cream-fluff.c2 { width: 70px; height: 70px; top: -35px; left: 35px; }
+.cream-fluff.c3 { width: 55px; height: 55px; top: -20px; right: 0px; }
+
+/* 3. Mango Chunks */
+.mango-chunks {
+  bottom: 200px;
+  width: 130px;
+  height: 30px;
+  z-index: 3;
+  left: 50%;
+  margin-left: -65px;
+}
+.chunk {
+  position: absolute;
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3), inset 1px 1px 3px rgba(255,255,255,0.5);
+}
+.chunk.ch1 { left: 20px; top: 0; transform: rotate(15deg); }
+.chunk.ch2 { left: 60px; top: 10px; transform: rotate(-20deg); }
+.chunk.ch3 { right: 20px; top: -5px; transform: rotate(45deg); }
+
+/* 4. Thick Shake Liquid */
+.shake-liquid {
+  bottom: 22px;
+  width: 136px;
+  height: 195px;
+  background: linear-gradient(180deg, #ffb703 0%, #fb8500 100%);
+  border-radius: 2px 2px 20px 20px;
+  z-index: 2;
+  box-shadow: inset 10px 0 20px rgba(255,255,255,0.3), inset -10px 0 20px rgba(0,0,0,0.2);
+  overflow: visible;
+  left: 50%;
+  margin-left: -68px;
+}
+
+/* Tapakta Hua (Dripping) Animation */
+.shake-drip {
+  position: absolute;
+  background: #ffb703;
+  width: 8px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: inset -1px -1px 2px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.2);
+  top: 10px; /* Start dripping from the TOP of the liquid */
+}
+.tapakta-drip.td1 { left: 15px; height: 10px; animation: dripDrop 2.5s infinite ease-in; }
+.tapakta-drip.td2 { left: 60px; height: 10px; animation: dripDrop 3.2s infinite ease-in 1s; }
+.tapakta-drip.td3 { right: 25px; height: 10px; animation: dripDrop 2.8s infinite ease-in 0.5s; }
+
+@keyframes dripDrop {
+  0% { height: 5px; opacity: 1; transform: scaleY(1) translateY(0); }
+  60% { height: 40px; opacity: 1; transform: scaleY(1) translateY(10px); }
+  90% { height: 50px; opacity: 0; transform: scaleY(1.2) translateY(30px); }
+  100% { height: 5px; opacity: 0; transform: scaleY(1) translateY(0); }
+}
+
+/* 5. Glass Cup */
+.shake-glass-base {
+  bottom: 15px;
+  width: 146px;
+  height: 220px;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 5px 5px 25px 25px;
+  z-index: 1;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 10px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);
+  left: 50%;
+  margin-left: -73px;
+}
+
+.glass-highlight {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 180px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 10px;
+  transform: skewX(-5deg);
+}
+
+/* Drip Splash Ripple Ring */
+.drip-splash-ring {
+  position: absolute;
+  bottom: -20px;
+  width: 180px;
+  height: 30px;
+  border: 2px solid rgba(251,133,0,0.6);
+  border-radius: 50%;
+  z-index: 0;
+  animation: splashRipple 2s infinite ease-out;
+}
+
+@keyframes splashRipple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Floating Sparkles & Mango Particles */
+.mango-sparkle {
+  position: absolute;
+  font-size: 20px;
+  z-index: 10;
+  opacity: 0;
+}
+.mango-sparkle.s1 { top: 10%; left: 10%; animation: floatSparkle 4s infinite 0.5s; }
+.mango-sparkle.s2 { top: 30%; right: 5%; animation: floatSparkle 5s infinite 1.2s; }
+.mango-sparkle.s3 { bottom: 40%; left: -5%; animation: floatSparkle 4.5s infinite 2s; }
+.mango-sparkle.s4 { bottom: 20%; right: 15%; animation: floatSparkle 3.8s infinite 0.8s; }
+
+@keyframes floatSparkle {
+  0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+  50% { transform: translateY(-30px) scale(1) rotate(180deg); opacity: 1; }
+  100% { transform: translateY(-60px) scale(0.5) rotate(360deg); opacity: 0; }
+}
+
+/* Glass Glow */
+.mango-glass-glow {
+  position: absolute;
+  bottom: -15px;
+  width: 100%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(251,133,0,0.6) 0%, rgba(251,133,0,0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(8px);
+  animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { opacity: 0.5; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+/* ---- Categories (Compact & Space-Saving) ---- */
+.categories {
+  padding: 40px 0 30px;
+  background: var(--dark-card);
+}
+
+.categories .section-header {
+  margin-bottom: 24px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cat-card {
+  background: var(--dark-card2);
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid rgba(255,255,255,0.06);
+  text-decoration: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cat-bg, rgba(255,107,53,0.08));
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.cat-card:hover::before { opacity: 1; }
+
+.cat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--cat-color, var(--primary));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.cat-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.cat-icon-wrap {
+  width: 44px;
+  height: 44px;
+  background: var(--cat-bg, rgba(255,107,53,0.12));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.cat-thumb-wrap {
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: var(--dark-card2);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.cat-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.cat-card:hover .cat-thumb { transform: scale(1.12); }
+
+.cat-card:hover .cat-icon-wrap {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px var(--cat-bg, rgba(255,107,53,0.3));
+}
+
+.cat-emoji { font-size: 28px; line-height: 1; }
+
+.cat-info { flex: 1; min-width: 0; }
+
+.cat-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cat-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.cat-arrow {
+  color: var(--cat-color, var(--primary));
+  font-size: 13px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) { .categories-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .categories-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cat-thumb-wrap { width: 54px; height: 54px; } }
+
+.cat-card:hover .cat-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* ---- Featured ---- */
+.featured {
+  padding: 80px 0;
+  background: var(--dark);
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .food-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+}
+@media (max-width: 768px) {
+  .food-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+@media (max-width: 400px) {
+  .food-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+
+/* ---- Animations ---- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.3); }
+  100% { filter: brightness(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+  .hero-title { font-size: 40px; }
+  .hero-stats { justify-content: center; }
+  .hero-search { justify-content: center; }
+  .hero-image { min-height: 300px; }
+  .hero-img-bg, .food-icon-ring { width: 280px; height: 280px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 32px; }
+  .hero-tag { font-size: 12px; }
+}
+
+/* Compact homepage and uniform content cards */
+.hero { min-height: min(500px, 70vh); padding: 80px 24px 30px; }
+.hero-image { min-height: 280px; }
+.categories, .featured { padding: var(--page-space, 40px) 0; }
+.food-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 1100px) { .food-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } }
+@media (max-width: 900px) { .hero-image { min-height: 250px; } .hero-img-bg, .food-icon-ring { width: 280px; height: 280px; } }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Your QuickBite shopping cart - Review items, apply promo codes and place your food order."/>
+  <meta name="theme-color" content="#ff6b35"/>
+  <title>Cart - QuickBite</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/cart.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <noscript>
+    <div style="background:#ff6b35;color:white;text-align:center;padding:12px;font-family:sans-serif;font-size:14px;">
+      ⚠️ JavaScript is required for QuickBite to work. Please enable it in your browser settings.
+    </div>
+  </noscript>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><i class="fas fa-bolt"></i> Quick<span>Bite</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html" class="active">Cart <span class="cart-badge" id="cartBadge">0</span></a></li>
+        <li><a href="orders.html">My Orders</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div id="navUserSlot"></div>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header menu-page-header">
+    <div class="container">
+      <div class="header-badge"><i class="fas fa-shopping-bag"></i> Review &amp; Checkout</div>
+      <h1>Your <span class="highlight">Shopping Cart</span></h1>
+      <p>Verify your items, apply discount promo codes, and complete your order.</p>
+    </div>
+  </section>
+
+  <section class="cart-section">
+    <div class="container">
+      <div class="cart-layout" id="cartLayout">
+        <!-- Cart items + Order summary rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Modal -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>
+          <span class="modal-header-icon"><i class="fas fa-box-open"></i></span>
+          Complete Your Order
+        </h2>
+        <button class="modal-close" onclick="closeModal()" title="Close"><i class="fas fa-xmark"></i></button>
+      </div>
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Full Name *</label>
+            <input type="text" id="custName" placeholder="Enter your full name" required/>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Phone Number *</label>
+            <input type="tel" id="custPhone" placeholder="+91 98765 43210" pattern="[0-9+\-\s]{7,15}" maxlength="15" required/>
+          </div>
+          <div class="form-group full-width">
+            <label><i class="fas fa-location-dot"></i> Delivery Address *</label>
+            <textarea id="custAddress" rows="2" placeholder="House No., Street Name, Landmark, City" required></textarea>
+          </div>
+          <div class="form-group full-width">
+            <label><i class="fas fa-wallet"></i> Payment Method</label>
+            <select id="payMethod">
+              <option value="cod">💵 Cash on Delivery (COD)</option>
+              <option value="upi">📱 UPI (GPay / PhonePe / Paytm)</option>
+              <option value="card">💳 Credit / Debit Card</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-discount-tag-row" id="modalDiscountTagRow" style="display:none;"></div>
+
+        <div class="order-final-total">
+          <span class="total-label"><i class="fas fa-receipt"></i> Total Payable Amount:</span>
+          <span id="modalTotal" class="final-price">₹0</span>
+        </div>
+
+        <button type="submit" class="btn-checkout modal-submit-btn">
+          <i class="fas fa-circle-check"></i> Confirm &amp; Place Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal success-modal-card">
+      <div class="success-icon-ring"><i class="fas fa-circle-check"></i></div>
+      <h2>Order Placed Successfully!</h2>
+      <p id="successMsg" class="success-msg"></p>
+      <p class="success-subtext"><i class="fas fa-person-biking" style="color:var(--primary);"></i> Your food will arrive in ~30 minutes!</p>
+      <div class="success-actions">
+        <a href="orders.html" class="btn-primary"><i class="fas fa-list-check"></i> Track Order</a>
+        <a href="menu.html" class="btn-secondary"><i class="fas fa-utensils"></i> Order More</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span class="footer-year">2024</span> QuickBite. Developed by <strong>Mohd Fahad</strong> | Full Stack Web Development Project</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/cartpage.js"></script>
+  <script>
+    // Footer year 2024
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.footer-year').forEach(el => el.textContent = '2024');
+    });
+  </script>
+</body>
+</html>
