@@ -961,9 +961,10 @@ app.use((req, res) => {
 });
 
 // Start Server after running database setup
+const HOST = '0.0.0.0'; // Bind to all interfaces for Railway/cloud deployment
 setupDatabase().then(() => {
-  app.listen(PORT, () => {
-    console.log(`🔒 QuickBite Secure MySQL Backend Server running at http://localhost:${PORT}`);
+  app.listen(PORT, HOST, () => {
+    console.log(`🔒 QuickBite Secure MySQL Backend Server running on ${HOST}:${PORT}`);
   });
 }).catch(err => {
   console.error('Failed to initialize database on startup:', err);
