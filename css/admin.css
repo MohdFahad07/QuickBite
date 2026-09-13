@@ -1373,3 +1373,64 @@ input[type="number"] {
   box-shadow: 0 10px 25px rgba(255, 107, 53, 0.5);
 }
 
+
+/* ============================================
+   ADMIN PANEL - FULL MOBILE RESPONSIVE
+   ============================================ */
+
+/* Tablet 900px */
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .admin-tabs { flex-wrap: wrap; gap: 6px; }
+  .admin-tab { padding: 8px 14px; font-size: 13px; }
+  .orders-table { font-size: 13px; }
+  .admin-section { padding: 20px 0 60px; }
+}
+
+/* Mobile 768px */
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-card { padding: 16px 14px; }
+  .stat-card-value { font-size: 24px; }
+  .admin-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .admin-tab { white-space: nowrap; padding: 8px 14px; font-size: 12px; flex-shrink: 0; }
+  .admin-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .admin-header-actions { width: 100%; }
+  .admin-header-actions .btn { width: 100%; justify-content: center; }
+  /* Tables horizontal scroll */
+  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .orders-table { min-width: 600px; font-size: 12px; }
+  /* Modal */
+  .admin-modal-box { width: calc(100% - 32px); max-width: 100%; padding: 20px 16px; margin: 16px; border-radius: 16px; }
+  /* Forms */
+  .admin-form-grid { grid-template-columns: 1fr !important; }
+  /* Charts */
+  .charts-row { flex-direction: column; gap: 16px; }
+  .chart-card { min-width: unset; width: 100%; }
+}
+
+/* Mobile 480px */
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 14px 12px; }
+  .stat-card-value { font-size: 20px; }
+  .stat-card-label { font-size: 12px; }
+  .stat-card-icon { width: 36px; height: 36px; font-size: 15px; }
+  .admin-tab { padding: 6px 10px; font-size: 11px; }
+  .admin-section { padding: 12px 0 40px; }
+  /* Admin login card */
+  .admin-login-card { padding: 24px 16px; margin: 16px; }
+  .admin-login-card h2 { font-size: 22px; }
+  /* Table adjustments */
+  .orders-table th, .orders-table td { padding: 8px 10px; font-size: 12px; }
+  /* Action buttons in table */
+  .table-actions { flex-direction: column; gap: 4px; }
+  .btn-sm { padding: 5px 10px; font-size: 11px; }
+}
+
+/* Extra Small 360px */
+@media (max-width: 360px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-card-value { font-size: 18px; }
+  .admin-tab { padding: 5px 8px; font-size: 10px; }
+}

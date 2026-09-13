@@ -973,22 +973,73 @@
   line-height: 1.5;
 }
 
-/* Responsive */
+/* ============================================
+   ORDERS PAGE - FULL MOBILE RESPONSIVE
+   ============================================ */
+
+/* Tablet 900px */
+@media (max-width: 900px) {
+  .orders-section { padding: 20px 0 60px; }
+  .order-card { padding: 20px; }
+  .order-meta-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .page-header { padding: 100px 16px 36px; }
+}
+
+/* Mobile 768px */
 @media (max-width: 768px) {
   .orders-section { padding: 16px 0 50px; }
-  .order-card { padding: 16px; }
+  .order-card { padding: 16px; border-radius: 16px; }
+  .order-card-header { flex-wrap: wrap; gap: 10px; }
+  .order-id-badge { font-size: 13px; }
   .order-meta-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .order-items-preview { gap: 8px; }
+  .order-item-thumb { width: 42px; height: 42px; }
+  /* Invoice modal */
   .inv-meta-row { grid-template-columns: 1fr; gap: 6px; }
   .inv-detail-item { flex-direction: row; justify-content: space-between; }
+  /* Stepper */
+  .stepper { gap: 0; overflow-x: auto; padding-bottom: 8px; }
   .stepper-step { min-width: 55px; }
   .stepper-icon-circle { width: 36px; height: 36px; font-size: 13px; }
   .stepper-label { font-size: 10px; }
   .stepper-eta { font-size: 9px; }
+  /* Page header */
+  .page-header h1 { font-size: 26px; }
+  .page-header { padding: 90px 16px 28px; }
 }
 
+/* Mobile 480px */
 @media (max-width: 480px) {
-  .order-meta-grid { grid-template-columns: 1fr; }
-  .order-footer { flex-direction: column; align-items: flex-start; }
-  .order-actions-group { width: 100%; flex-direction: column; }
-  .btn-simulate-step, .btn-view-invoice, .btn-reorder { width: 100%; justify-content: center; }
+  .order-card { padding: 12px; }
+  .order-meta-grid { grid-template-columns: 1fr; gap: 6px; }
+  .order-meta-item { font-size: 12px; }
+  .order-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .order-total-display { font-size: 16px; }
+  .order-actions-group { width: 100%; flex-direction: column; gap: 8px; }
+  .btn-simulate-step, .btn-view-invoice, .btn-reorder {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  /* Invoice modal full screen */
+  .invoice-modal-box { width: calc(100% - 24px); padding: 16px 12px; border-radius: 14px; }
+  .invoice-modal-box h3 { font-size: 18px; }
+  .inv-items-table { font-size: 12px; }
+  .inv-items-table th, .inv-items-table td { padding: 8px 6px; }
+  /* Stepper compact */
+  .stepper-step { min-width: 48px; }
+  .stepper-icon-circle { width: 30px; height: 30px; font-size: 11px; }
+  /* Empty state */
+  .orders-empty-card { padding: 32px 16px; }
+  .empty-icon-box { width: 56px; height: 56px; font-size: 22px; }
+  .orders-empty-card h3 { font-size: 18px; }
 }
+
+/* Extra Small 360px */
+@media (max-width: 360px) {
+  .order-card { padding: 10px; }
+  .page-header h1 { font-size: 20px; }
+  .btn-simulate-step, .btn-view-invoice, .btn-reorder { font-size: 12px; padding: 8px 12px; }
+}
+
