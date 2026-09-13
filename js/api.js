@@ -2,7 +2,7 @@
    QuickBite API Bridge - MySQL Backend Client & Auth System
    ============================================================ */
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = '/api';
 
 const API = {
   // Token & User Store Helpers
