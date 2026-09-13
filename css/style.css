@@ -1162,43 +1162,115 @@ svg.svg-inline--fa {
 }
 
 /* ---- Responsive ---- */
+/* ============================================
+   COMPREHENSIVE MOBILE RESPONSIVE SYSTEM
+   ============================================ */
+
+/* Tablet - 900px */
 @media (max-width: 900px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
   .offer-illustration { width: 104px; height: 104px; }
-  .offer-illustration svg { width: 52px; height: 52px; }
-  .offer-text h2 { font-size: 24px; }
+  .offer-text h2 { font-size: 22px; }
+  .steps-grid { gap: 12px; }
+  .step-card { min-width: 160px; padding: 16px 12px; }
 }
 
+/* Mobile Landscape - 768px */
 @media (max-width: 768px) {
+  /* Navbar */
   .nav-links {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     background: var(--dark-card);
     flex-direction: column;
-    padding: 24px;
-    gap: 20px;
+    padding: 20px 24px;
+    gap: 16px;
     border-top: 1px solid rgba(255,255,255,0.05);
     box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 999;
   }
-
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
+  .nav-link { font-size: 15px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); width: 100%; }
 
-  .section-header h2 { font-size: 28px; }
+  /* Section Headers */
+  .section-header { margin-bottom: 20px; }
+  .section-header h2 { font-size: 24px; }
+  .section-header p { font-size: 14px; }
+
+  /* How it works */
+  .steps-grid { flex-direction: column; align-items: stretch; gap: 12px; }
+  .step-card { max-width: 100%; min-width: unset; padding: 16px 20px; }
   .step-arrow { display: none; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .offer-content { flex-direction: column; text-align: center; gap: 20px; }
+
+  /* Offer Banner */
+  .offer-content { flex-direction: column; text-align: center; gap: 20px; padding: 24px 16px; }
+  .offer-text h2 { font-size: 20px; }
+  .offer-actions { flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .promo-code-display { flex-wrap: wrap; justify-content: center; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+  /* Food Cards */
+  .food-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .food-card { min-height: 260px; }
+  .food-card-image { height: 140px; }
+
+  /* Page header */
+  .page-header { padding: 100px 16px 32px; }
+  .page-header h1 { font-size: 28px; }
 }
 
+/* Mobile Portrait - 480px */
 @media (max-width: 480px) {
-  .page-header h1 { font-size: 28px; }
-  .page-header { padding: 100px 0 40px; }
-  .toast { bottom: 16px; right: 16px; left: 16px; max-width: none; }
-  .food-card-name { font-size: 15px; }
-  .section-header h2 { font-size: 24px; }
+  /* Global */
+  .container { padding: 0 16px; }
+
+  /* Navbar */
+  .nav-brand span { font-size: 18px; }
+  .nav-actions { gap: 8px; }
+  .cart-btn span:not(.cart-count) { display: none; }
+
+  /* Section */
+  .section-header h2 { font-size: 20px; }
+  .section-header p { font-size: 13px; }
+
+  /* Food grid - single column on very small */
+  .food-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .food-card { min-height: 240px; }
+  .food-card-image { height: 120px; }
+  .food-card-name { font-size: 13px; }
+  .food-card-price { font-size: 14px; }
+  .food-card-body { padding: 10px; }
+
+  /* Steps */
+  .step-num { font-size: 28px; }
+  .step-icon { width: 40px; height: 40px; font-size: 16px; }
+  .step-card h3 { font-size: 14px; }
+  .step-card p { font-size: 12px; }
+
+  /* Toast */
+  .toast { bottom: 16px; right: 12px; left: 12px; max-width: none; font-size: 13px; }
+
+  /* Page header */
+  .page-header h1 { font-size: 24px; }
+  .page-header { padding: 90px 16px 28px; }
+
+  /* Offer banner */
+  .offer-text h2 { font-size: 18px; }
+  .offer-text p { font-size: 13px; }
+  .how-it-works { padding: 28px 0; }
+}
+
+/* Extra Small - 360px */
+@media (max-width: 360px) {
+  .food-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+  .nav-brand span { font-size: 16px; }
+  .section-header h2 { font-size: 18px; }
 }
 
 /* Shared visual system */

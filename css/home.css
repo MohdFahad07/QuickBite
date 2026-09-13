@@ -823,25 +823,81 @@
   50% { transform: translateY(-12px); }
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 900px) {
-  .hero { flex-direction: column; text-align: center; padding-top: 120px; }
-  .hero-title { font-size: 40px; }
-  .hero-stats { justify-content: center; }
-  .hero-search { justify-content: center; }
-  .hero-image { min-height: 300px; }
-  .hero-img-bg, .food-icon-ring { width: 280px; height: 280px; }
-}
-
-@media (max-width: 480px) {
-  .hero-title { font-size: 32px; }
-  .hero-tag { font-size: 12px; }
-}
-
 /* Compact homepage and uniform content cards */
 .hero { min-height: min(500px, 70vh); padding: 80px 24px 30px; }
 .hero-image { min-height: 280px; }
 .categories, .featured { padding: var(--page-space, 40px) 0; }
 .food-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 1100px) { .food-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } }
-@media (max-width: 900px) { .hero-image { min-height: 250px; } .hero-img-bg, .food-icon-ring { width: 280px; height: 280px; } }
+
+/* ---- HOME PAGE RESPONSIVE ---- */
+@media (max-width: 1100px) {
+  .food-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+}
+
+@media (max-width: 900px) {
+  /* Hero */
+  .hero { flex-direction: column; text-align: center; padding-top: 100px; gap: 30px; }
+  .hero-content { align-items: center; }
+  .hero-title { font-size: 36px; }
+  .hero-stats { justify-content: center; }
+  .hero-search { justify-content: center; max-width: 100%; }
+  .hero-image { min-height: 250px; order: -1; }
+  .hero-img-bg, .food-icon-ring { width: 260px; height: 260px; }
+  /* Offer/Mango shake */
+  .offer-content { flex-direction: column; align-items: center; }
+  .mango-shake-showcase { height: 360px; }
+  .shake-glass-wrap { width: 200px; height: 300px; }
+}
+
+@media (max-width: 768px) {
+  /* Hero */
+  .hero { padding: 90px 16px 24px; }
+  .hero-title { font-size: 30px; line-height: 1.2; }
+  .hero-subtitle { font-size: 14px; }
+  .hero-stats { gap: 16px; flex-wrap: wrap; }
+  .stat-divider { display: none; }
+  .hero-search { flex-direction: column; gap: 8px; border-radius: 16px; padding: 12px; }
+  .search-input { width: 100%; }
+  .search-btn { width: 100%; justify-content: center; }
+  /* Food grid */
+  .food-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  /* Categories */
+  .categories-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 10px; }
+  /* Mango shake section */
+  .mango-shake-showcase { height: 320px; }
+  .shake-glass-wrap { width: 180px; }
+  .shake-stack { width: 140px; height: 280px; }
+  .whipped-cream { width: 120px; }
+  .shake-liquid { width: 116px; }
+  .shake-glass-base { width: 126px; }
+  /* Offer timer */
+  .timer-boxes { gap: 6px; }
+  .timer-box { min-width: 48px; padding: 8px 10px; }
+  .timer-num { font-size: 22px; }
+}
+
+@media (max-width: 480px) {
+  /* Hero */
+  .hero-title { font-size: 26px; }
+  .hero-tag { font-size: 11px; padding: 4px 10px; }
+  .hero-btns { flex-direction: column; gap: 10px; width: 100%; }
+  .hero-btns .btn { width: 100%; text-align: center; justify-content: center; }
+  /* Food grid */
+  .food-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .food-card { min-height: 220px; }
+  .food-card-image { height: 110px; }
+  /* Categories */
+  .categories-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px; }
+  .cat-card { padding: 12px 8px; }
+  .cat-icon { font-size: 24px; }
+  .cat-name { font-size: 11px; }
+  /* Offer/Mango */
+  .mango-shake-showcase { height: 280px; }
+  .shake-glass-wrap { width: 160px; height: 260px; }
+  .offer-text h2 { font-size: 20px; }
+  .promo-codes { flex-direction: column; gap: 8px; }
+  .timer-boxes { gap: 4px; }
+  .timer-box { min-width: 42px; padding: 6px 8px; }
+  .timer-num { font-size: 18px; }
+  .timer-label { font-size: 9px; }
+}

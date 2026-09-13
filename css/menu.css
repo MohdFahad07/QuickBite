@@ -457,21 +457,33 @@
   .filter-top-row { flex-direction: column; align-items: stretch; }
   .filter-top-actions { justify-content: space-between; }
   .filter-category-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .menu-section .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 }
 
 @media (max-width: 768px) {
-  .menu-page-header h1 { font-size: 32px; }
-  .menu-search-box { min-width: unset; }
-  .menu-filters { justify-content: flex-start; overflow-x: auto; width: 100%; }
+  .menu-page-header h1 { font-size: 28px; }
+  .menu-search-box { min-width: unset; width: 100%; }
+  .menu-filters { justify-content: flex-start; overflow-x: auto; width: 100%; padding-bottom: 4px; }
   .sort-select { width: 100%; }
-  .menu-section .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .menu-section .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .menu-filter-card { padding: 16px; }
+  .filter-top-row { gap: 10px; }
 }
 
 @media (max-width: 480px) {
-  .menu-filter-card { padding: 16px; border-radius: 18px; }
-  .menu-page-header { padding: 90px 0 36px; }
-  .menu-page-header h1 { font-size: 26px; }
-  .header-stats-pills { gap: 8px; }
+  .menu-filter-card { padding: 12px; border-radius: 16px; }
+  .menu-page-header { padding: 88px 16px 28px; }
+  .menu-page-header h1 { font-size: 22px; }
+  .header-stats-pills { gap: 6px; flex-wrap: wrap; }
   .header-pill { font-size: 11px; padding: 4px 10px; }
-  .cat-tab { padding: 6px 12px; font-size: 12px; }
+  .cat-tab { padding: 6px 12px; font-size: 12px; white-space: nowrap; }
+  .menu-section .food-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .menu-search-box input { font-size: 13px; }
+  .pagination { gap: 4px; }
+  .page-btn { min-width: 32px; height: 32px; font-size: 12px; }
+}
+
+@media (max-width: 360px) {
+  .menu-section .food-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .menu-page-header h1 { font-size: 20px; }
 }
